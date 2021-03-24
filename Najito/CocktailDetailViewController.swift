@@ -10,9 +10,7 @@ import UIKit
 class CocktailDetailViewController: UIViewController {
     
     @IBOutlet weak var cocktailPicture: UIImageView!
-    @IBOutlet weak var imageAttributionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var creativeCommonsLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var IBALabel: UILabel!
@@ -23,7 +21,6 @@ class CocktailDetailViewController: UIViewController {
     var cocktailID: String!
     var imageUrl: URL!
     var dateModified: String!
-    var creativeCommons: String!
     var cocktailName: String!
     var cocktailCategory: String!
     var IBA: String!
@@ -47,7 +44,6 @@ class CocktailDetailViewController: UIViewController {
                 let urlString           = cocktailDict["strDrinkThumb"]!
                 self.imageUrl           = URL(string: urlString!)
                 self.dateModified       = cocktailDict["dateModified"]!
-                self.creativeCommons    = cocktailDict["strCreativeCommonsConfirmed"]!
                 self.cocktailName       = cocktailDict["strDrink"]!
                 self.cocktailCategory   = cocktailDict["strCategory"]!
                 self.IBA                = cocktailDict["strIBA"]!
@@ -81,12 +77,10 @@ class CocktailDetailViewController: UIViewController {
         }
         
         DispatchQueue.main.async {
-            self.imageAttributionLabel.text = nil
             self.dateLabel.text             = self.dateModified
-            self.creativeCommonsLabel.text  = self.creativeCommons
             self.nameLabel.text             = self.cocktailName
             self.categoryLabel.text         = self.cocktailCategory
-            self.IBALabel.text              = self.IBA
+            self.IBALabel.text              = self.IBA ?? "None"
             self.glassLabel.text            = self.glass
             self.ingredientsLabel.text      = self.ingredients
             self.instructionsLabel.text     = self.instructions

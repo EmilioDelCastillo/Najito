@@ -24,10 +24,6 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(textField.tag)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 1 {
             let name = textField.text
